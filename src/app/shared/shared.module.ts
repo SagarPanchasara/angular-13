@@ -16,12 +16,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
 
 const BASE_MODULES = [
   FormsModule,
 
   NgxSpinnerModule,
 
+  MatSidenavModule,
+  MatMenuModule,
   MatTableModule,
   MatDialogModule,
   MatPaginatorModule,
