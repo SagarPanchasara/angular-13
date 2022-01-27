@@ -15,16 +15,52 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-nav-list>
-      <a mat-list-item routerLink="/">
+      <mat-list-item routerLink="/">
         <mat-icon>dashboard</mat-icon> &nbsp;&nbsp;
         Dashboard
-      </a>
-
-      <a mat-list-item routerLink="/sample-module">
-        <mat-icon>view_module</mat-icon> &nbsp;&nbsp;
-        Sample Page 1
-      </a>
-
+      </mat-list-item>
+      <mat-list-item routerLink="#">
+        <mat-icon>check_box</mat-icon> &nbsp;&nbsp;
+        General
+      </mat-list-item>
+      <mat-list-item routerLink="#">
+        <mat-icon>person</mat-icon> &nbsp;&nbsp;
+        Profile
+      </mat-list-item>
+      <mat-list-item routerLink="#">
+        <mat-icon>notification_important</mat-icon> &nbsp;&nbsp;
+        Notification
+      </mat-list-item>
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Sample Module
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="sample-module">
+            <mat-icon>view_module</mat-icon> &nbsp;&nbsp;
+            Sample Page 1
+          </a>
+          <a mat-list-item routerLink="sample-module/2">
+            <mat-icon>view_quilt</mat-icon> &nbsp;&nbsp;
+            Sample Page 2
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Privacy
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="#">
+            <mat-icon>person_add</mat-icon> &nbsp;&nbsp;
+            Partnership Request
+          </a>
+          <a mat-list-item routerLink="#">
+            <mat-icon>visibility</mat-icon> &nbsp;&nbsp;
+            Profile Visibility
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

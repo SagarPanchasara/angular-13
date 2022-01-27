@@ -4,7 +4,7 @@
 }
 
 .sidenav {
-  width: 200px;
+  width: 220px;
   margin-top: 64px;
 }
 
@@ -16,4 +16,17 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.mat-list-base[dense] .mat-list-item {
+  font-size: 15px !important;
+}
+
+::ng-deep.mat-expansion-panel-body {
+  padding: 0 0 16px 0px !important;
+}
+
+.mat-list-base[dense] .mat-list-item,
+.mat-list-base[dense] .mat-list-option {
+  padding-left: 14px;
 }
