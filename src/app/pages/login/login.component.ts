@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent {
   });
 
   constructor(private fb: FormBuilder,
+    private notificationService: NotificationService,
     private activatedRoute: ActivatedRoute,
     private router: Router) {
     this.activatedRoute.queryParams.subscribe((query: any) => {
@@ -37,7 +39,7 @@ export class LoginComponent {
         this.router.navigate(['']);
       }
     } else {
-      alert('Invalid credentials');
+      this.notificationService.error('Invalid credentials');
     }
   }
 }

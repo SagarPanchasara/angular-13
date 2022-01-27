@@ -19,14 +19,16 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const BASE_MODULES = [
   FormsModule,
   ReactiveFormsModule,
-  
+
   NgxSpinnerModule,
-  
+
+  MatSnackBarModule,
   MatExpansionModule,
   MatInputModule,
   MatSidenavModule,
