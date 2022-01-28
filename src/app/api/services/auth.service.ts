@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(data: any): Observable<any> {
-    return this.http.post(`${this.BASE_URL}/auth/login`, data);
+    return this.http.post(`${this.BASE_URL}/login`, data);
   }
 
 }

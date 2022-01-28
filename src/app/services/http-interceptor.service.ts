@@ -11,6 +11,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,13 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   private calls = 0;
 
-  constructor(private router: Router, private spinner: NgxSpinnerService) { }
+  constructor(private router: Router, private spinner: NgxSpinnerService, private notificationService: NotificationService) { }
+
+  handleLogout(message: any) {
+    this.notificationService.error(message ? message : "Session expired");
+    localStorage.removeItem('token');
+    this.router.navigate(['login'])
+  }
 
   showSpinner(): void {
     this.calls++;
@@ -70,9 +77,18 @@ export class HttpInterceptorService implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.log(`error`, error);
 
+        if (!(error as any).handled) {
+          const errorMessage = error.error.error || 'Something went wrong!!';
+          if (error.status === 401 || error.status === 403) {
+            this.handleLogout(errorMessage);
+          } else {
+            this.notificationService.error(errorMessage);
+          }
+        }
+
         this.hideSpinner();
 
-        return throwError(error);
+        return throwError(() => error);
       }));
   }
 
